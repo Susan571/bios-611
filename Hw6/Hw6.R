@@ -27,5 +27,10 @@ plot2 <- function() {ggplot(data, aes(x = Cardio)) +
        y = "Count") +
   theme_minimal()
 }
+png(file="/Users/susanefforta/BIOS611project/Hw6/Cardio_per_gender.png", width=700, height=500)
 plot1()
+dev.off()
+
+png(file="/Users/susanefforta/BIOS611project/Hw6/Cardio.png", width=700, height=500)
 plot2()
+dev.off()
