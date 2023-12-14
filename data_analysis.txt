@@ -1,0 +1,8 @@
+Linear Discrimnant Analysis, Logistic Regression, and Adaboost will be used to model the dataset. 
+Using Linear Discriminant Analysis, the auc is 0.702760468332397 for the testing set. 
+Using logistic regression, the auc is 0.783840488083617 for the testing set. After a stepwise variable selection, the auc is 0.783841708072271 with only four variables: heart_disease, hypertension, avg_glucose_level, and age. 
+Using adaboost, the auc is 0.783840488083617 for the testing set. 
+ Using Linear Discriminant Analysis, the auc is 0.702760468332397 for the testing set. 
+Using logistic regression, the auc is 0.783840488083617 for the testing set. After a stepwise variable selection, the auc is 0.783841708072271 with ten variables: systolic blood pressure, diastolic blood pressure, smoking, alcohol intake, height, glucose, physical activity, weight, cholesterol, age . 
+Using adaboost, the auc is 0.783840488083617 for the testing set. 
+ 
