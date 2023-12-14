@@ -3,13 +3,13 @@ Introduction to the dataset and intended analysis
 
 https://www.kaggle.com/datasets/sulianova/cardiovascular-disease-dataset/
 
-Stroke, one type of cardiovascular diseases, is a leading cause of long-term disability and death globally. It can be difficult to detect and requires immediate medical attention. Our understanding of cardiovascular diseases is still relatively primitive, and only a relatively limited amount of prevention and intervention methods are available.
+Our understanding of cardiovascular diseases is still relatively primitive, and only a relatively limited amount of prevention and intervention methods are available.
 
-The conventional risk factors associated with strokes includes high blood pressure, high cholesterol, diabetes, coronary artery diseases and many other chronic diseases. The chosen dataset contains not only many of these risk factors, but also contains some novel attributes, like marriage status, work types (public, private, or self-employed) and residence types (urban and rural). It is interesting to explore if these unconventional attributes would have any contribution to predicting one’s likelihood of getting a stoke.
+The conventional risk factors associated with cardiovascular diseases includes biographical data(age, gender, height, weight), high systolic blood pressure, high diastolic blood pressure, high cholesterol, high glucose and many other chronic diseases. The chosen dataset(<https://www.kaggle.com/datasets/sulianova/cardiovascular-disease-dataset/>) contains not only many of these risk factors, but also contains some novel attributes, like physical activity status, smoking status, and alcohol intake from 70000 patiences. It is interesting to explore if these unconventional attributes would have any contribution to predicting one's likelihood of getting a cardiovascular disease.
 
 A data cleaning step and explorative data analysis (EDA) will be performed first to see the structure of the dataset, the levels of the discrete (categorical) variables, and the distribution of the continuous variables. Also, data visualization could help to identify strong relationship between the covariates, if any. After performing an initial explorative data analysis and visualization, the dataset is analyzed with Linear Discriminant Analysis, Logistic regression, and AdaBoost. The fit is then compared and discussed.  We can then see if the interesting novel attributes truly have an influence or not.
 
-In summary, it would be an interesting exercise to explore the potential covariates that can predict the likelihood of getting strokes.
+In summary, it would be an interesting exercise to explore the potential covariates that can predict the likelihood of getting a cardiovascular disease.
 
 Using This Repository
 =====================
@@ -64,15 +64,15 @@ Consider this snippet from the Makefile included in this project:
 
 ```
 #clean the dataset
-clean_data.csv: .created-dirs data_explore_clean.R \
-	source_data/healthcare-dataset-stroke-data.csv
-	Rscript data_explore_clean.R
+clean_data.csv: .created-dirs data_clean.R \
+	data/cardio_train.csv
+	Rscript data_clean.R
 ```
 
 The lines with `#` are comments which just describe the target. Here
 we describe an artifact (`clean_data.csv`), its
-dependencies (`.created-dirs`, `data_explore_clean.R`,
-`source_data/healthcare-dataset-stroke-data.csv`) and how to build it `Rscript
+dependencies (`.created-dirs`, `data_clean.R`,
+`data/cardio_train.csv`) and how to build it `Rscript
 data_explore_clean.R`. If we invoke Make like so:
 
 ```
@@ -93,7 +93,7 @@ through the terminal in RStudio:
 
 ```
 cd work
-make report.pdf
+make report.html
 ```
 
 And this will build the report and any missing dependencies required
@@ -101,4 +101,4 @@ on the way.
 
 Results
 =======
-For our dataset, two of the novel attributes seem to have a significant correlation with the dichotomous stroke outcome during the explorative data analysis stage. The variable selection procedure in logistic regression most often picks some of the conventional variables as important predictors: smoking status (when using seed 319) heart_disease (when using seed 295), hypertension, avg_glucose_level, and age, with the last three always being selected. However, for some seeds (seed 359), work type and residence type are also being selected，which indicates those two novel attributes may indeed have some importance in the stroke outcome. This is an interesting result and worth further looking into with larger and more balanced dataset. (The dataset is heavily unbalanced, with only 5% having stroke outcome.) Also, it is worth noting that for analysis of this dataset, the three methods (LDA, Logistic regression, and Adaboost) have similar power in prediction.
+For our dataset, two of the novel attributes (smoking and alcohol intake) seem to have a significant correlation with the dichotomous cardiovascular disease outcome during the explorative data analysis stage. The variable selection procedure in logistic regression most often picks some of the conventional variables as important predictors: systolic blood pressure, diastolic blood pressure, height, glucose, weight, cholesterol and age. However, for some seeds (seed=359), physical activity, smoking and alcohol intake are also being selected，which indicates these novel attributes may indeed have some importance in the cardiovascular disease outcome. This is an interesting result and worth further looking into with larger and more balanced datasets. Also, it is worth noting that for analysis of this dataset, the three methods (LDA, Logistic regression, and Adaboost) have similar power in prediction.
